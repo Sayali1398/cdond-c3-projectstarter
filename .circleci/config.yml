@@ -1,5 +1,10 @@
 version: 2.1
 jobs:
+  deploy-job:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "b8:7a:7b:54:06:8f:e3:1e:1d:80:4b:98:bb:5a:a4:f7"
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
