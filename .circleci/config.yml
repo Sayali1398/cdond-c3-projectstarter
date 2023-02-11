@@ -75,15 +75,9 @@ jobs:
           command: |
               cd frontend
               npm install
-              npm audit --audit-level=critical --force
-              npm audit --audit-level=critical --force
+              npm audit fix --force --audit-level=critical
+              npm audit fix --force --audit-level=critical
               npm audit --audit-level=critical
-
-      - save_cache:
-          paths: [frontend/node_modules]
-          key: scan-frontend-build
-
-      
   scan-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -96,13 +90,8 @@ jobs:
           command: |
               cd backend
               npm install
-              npm audit --audit-level=critical --force
-              npm audit --audit-level=critical --force
+              npm audit fix --force --audit-level=critical 
               npm audit --audit-level=critical
- 
-      - save_cache:
-          paths: [backend/node_modules]
-          key: scan-backend-build
 workflows:
   default:
     jobs:
