@@ -1,4 +1,4 @@
---
+---
 - name: "Add Node.js from Nodesource"
   become: true
   shell: |
@@ -19,4 +19,4 @@
   become: True
   copy: 
     src: env.sh
-    dest: /etc/profile.d
+    dest: /etc/profile.d/
