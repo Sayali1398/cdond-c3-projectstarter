@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  slack: circleci/slack@4.12.1
 jobs:
   build-frontend:
     docker:
@@ -18,9 +16,7 @@ jobs:
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
-      - slack/notify:
-          event: pass
-          template: success_1
+
 
   build-backend:
     docker:
