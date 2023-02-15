@@ -6,10 +6,10 @@ commands:
       - run:
           name: Install Ansible
           command: |
-            sudo apt update
-            sudo apt install software-properties-common -y
-            sudo add-apt-repository --yes --update ppa:ansible/ansible
-            sudo apt install ansible -y
+            apt update
+            apt install software-properties-common -y
+            add-apt-repository --yes --update ppa:ansible/ansible
+            apt install ansible -y
 
   destroy-environment:
     description: Destroy whole environment
@@ -208,7 +208,7 @@ jobs:
             # Your code here
             apk add --update tar gzip ansible nodejs npm curl && \
             pip install awscli
-      - install_ansible
+
       - run:
           name: Configure server
           command: |
