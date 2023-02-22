@@ -234,9 +234,23 @@ jobs:
 
   run-migrations:
     docker:
-      - image: circleci/node:13.8.0
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
+      - run:
+            name: Install dependencies
+            command: |
+              apk update
+              apk upgrade
+              apk add unzip 
+              apk add curl
+              /usr/local/bin/python -m pip install --upgrade pip    
+      - run:
+            name: Install node
+            command: |
+              apk add --update nodejs nodejs-npm
       - install_awscli
       - run:
           name: Run migrations
@@ -254,7 +268,7 @@ jobs:
               curl --insecure https://kvdb.io/DhPz4AzhpmDXSTrMWDKFkn/migration_$\{CIRCLE_WORKFLOW_ID:0:7\}  -d '1'
             fi
       - destroy-environment
-      - revert-migrations
+
   deploy-frontend:
    docker:
      - image: cimg/base:stable
