@@ -240,7 +240,6 @@ jobs:
       - attach_workspace:
           at: ~/
       - install_awscli
-      - install_ansible
       - install_nodejs
       - run:
           name: Run migrations
